@@ -1,0 +1,276 @@
+body{
+	width: 100%; /* height: 100vh;*/
+	margin: 0; padding: 0 0 100px;
+	font-family: "Raleway", "sans-serif";
+	font-size: 16px;
+	text-align: center;
+	overflow: overlay;
+	/* color: white; */
+	background-color: #209be5;
+	background-image: url("/interface/back.png"), linear-gradient(to right, #f59d14, #209be5);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	white-space: nowrap;
+}
+h1, h2, h3, h4, h5, h6, p, a, div, article, span{
+	white-space: initial;
+}
+h1, h2, h3, h4, h5, h6{
+	font-family: "Krona One", "sans-serif";
+}
+h1{
+	font-size: 4em;
+	text-shadow: 0 0 15px white;
+	margin-bottom: 30px;
+	color: black;
+	background: #00000077;
+}
+h2{ font-size: 2em; margin: 5px 0; }
+h3{ margin: 5px 0; }
+ul{
+	margin: 0;
+	padding-top: 10px; padding-bottom: 10px;
+}
+a, a:visited{
+	text-decoration: none;
+	color: inherit;
+	transition: text-shadow 0.5s, color 0.5s;
+	cursor: pointer;
+}
+a:hover{
+	color: #09f;
+}
+b{
+	color: #f90; text-shadow: 1px 1px 2px black;
+}
+hr{
+	border: 1px outset #09f;
+}
+::-webkit-scrollbar{
+	/* width: 7px; height: 7px; */
+	transition-duration: 0.3s;
+}
+::-webkit-scrollbar-thumb{
+	/* width: 7px; height: 7px; */
+	border-radius: 10px;
+	background-color: #33333377;
+	transition-duration: 0.3s;
+}
+::-webkit-scrollbar:hover{
+	background-color: #33333355;
+}
+::-webkit-scrollbar-thumb:hover{
+	background-color: #333333aa;
+}
+.flexdown{ display: flex; flex-direction: column; justify-content: center; }
+
+footer{
+	position: fixed;
+	bottom: 20px; right: 20px;
+	z-index: 9;
+	font-size: 0.7em;
+	text-align: right;
+}
+
+form{ text-align: left; }
+
+/*****home*****/
+
+.home{
+	display: flex; flex-direction: column;
+}
+
+.newthing{
+    display: flex; flex-direction: row; justify-content: center;
+    background: #13f7cd6b;
+}
+.newthing div{ position: relative; text-align: left; margin: 10px;}
+.newthing img{ width: 11vw; }
+.newthing div:nth-child(2){ display: flex; flex-direction: column; justify-content: center;}
+.newthing div:nth-child(2) h3{ font-size: 2em; }
+.newthing .hoverplay{ height: 11vw; font-size: 7vw;}
+.newthing h3, .newthing h4, .newthing p{ margin: 0; }
+.newthing p{ max-width: 500px; }
+.newthing p:nth-child(3){ font-style: italic; }
+
+.albumlist{
+	margin: auto; padding: 10px;
+	/*white-space: nowrap; overflow-x: auto; overflow-y: hidden;*/
+}
+.singlealbum{
+	width: 11vw;
+	margin: 10px;
+	display: inline-block;
+	vertical-align: top;
+	transition: transform 0.3s ease-out;
+	position: relative;
+}
+.singlealbum, .newthing h3:nth-child(2){ color: white; }
+.singlealbum img{
+	width: 100%;
+}
+
+.albumdetails, .songdetails{
+	position: fixed; top: 0; left: 0;
+	width: 100%; height: 100%; min-height: 100vh;
+	background-color: #22222277;
+	color: white;
+	display: none;
+	opacity: 0; z-index: 2;
+	transition: opacity 0.3s ease-out;
+}
+.unvanished{ display: block; opacity: 1; }
+.albumdetails #albumdetailsclose, .songdetails #songdetailsclose{
+	position: fixed; top: 40px; left: 20px; z-index: 10;
+	user-select: none;
+	font-size: 4em;
+}
+.info{ display: flex; justify-content: center; align-items: center; }
+.songdetails .info{
+	border-radius: 30px;
+	max-width: 700px;
+	margin: auto; padding: 30px;
+}
+.albumdetails .albumcontainer>img{ height: 38vw; }
+.albumdetails h2{ display: inline-block; border-bottom: 3px double white; }
+.albumdetails p{ text-indent: 1em; text-align: justify; }
+.linear-list{
+	padding: 0;
+	display: flex;
+	list-style-type: none;
+	font-style: italic;
+}
+.linear-list li:after{ content: '•'; margin: 0 10px; }
+.linear-list li:last-child:after{ content: unset; }
+
+.songdetails .albumcontainer>img{ width: 200px; height: 200px; }
+.info .contents{ text-align: left; width: 30vw; margin: 0 20px; }
+.info .contents .year{ font-style: italic; }
+.info .songlist{ background-color: #111111ee; width: 300px; padding: 20px 0; border-radius: 15px; }
+.info h2, .info h3{ margin: 0; }
+.info h3{ color: lightgray; font-style: italic; }
+.info .songlist h3{ background-color: #000000ee; }
+.info .songlist ol{ text-align: left; }
+ol.numberless{ list-style-type: disc; }
+.info .songlist ol li{ transition: color 0.3s ease-out, transform 0.3s ease-out; user-select: none; }
+.info .songlist li:hover{ color: #07f; transform: translate(5px,0); }
+
+.songdetails .linear-list{ justify-content: center; }
+
+@keyframes confirmationnotice {
+	0% { opacity: 0; }
+	25% { opacity: 1; }
+	75% { opacity: 1; }
+	100% { opacity: 0;  }
+}
+.green-tick{
+	color: lime; text-shadow: 0 0 15px white; font-weight: bold;
+	opacity: 0; user-select: none; display: none;
+	vertical-align: top;
+}
+.confirmed{ display: initial; animation: confirmationnotice 2s linear 0s 1; }
+
+.albumcontainer{ display: block; position: relative; margin-left: 15px;}
+.hoverplay{
+	width: 100%; height: 100%;
+	display: flex; justify-content: center; align-items: center;
+	position: absolute; top: 0; left: 0; opacity: 0;
+	font-size: 7em; line-height: 100%;
+	transition-duration: 0.5s;
+	user-select: none;
+}
+.hoverplay img{
+    width: 50%;
+    filter: invert(1);
+}
+.hoverplay:hover{ background-color: #00000077; text-shadow: 0 0 15px white; opacity: 1; }
+.singlealbum .hoverplay{ font-size: 1.1vw; margin: 0; }
+
+#player{
+	position: fixed; bottom: 0; left: 0;
+	width: 50vw; height: 100px;
+	background: linear-gradient(to right, #000000ee 70%, #00000000);
+	display: flex; justify-content: left; align-items: center;
+	color: white;
+	text-align: left;
+	user-select: none;
+	z-index: 10;
+}
+#player audio{ width: 500px; margin: 0 10px; }
+#player h4, #player h5, #player p{ margin: 0; }
+#player p{ font-size: 0.75em; }
+#player .album{ height: 54px; margin: 0 10px; z-index: 3; }
+#player .load{ display: none; width: 40px; }
+#player .hoverplay{ font-size: 2em; }
+#player .next{ height: auto; z-index: 1;}
+#player .pause:hover + .next, #player .next:hover{ transform: translate(0, -35px); opacity: 1; background-color: initial; }
+#player input{
+	position: absolute; left: -4px; bottom: -15px;
+	-webkit-appearance: none; appearance: none;
+	width: 100%; height: 8px; border-radius: 4px;
+	background: linear-gradient(to right, black, #44444477), #44444477; transition: background 0.3s;
+	outline: 0;
+	transform: rotate(270deg); transform-origin: 0 50%;
+}
+#player input:hover{ background: #444444ff; }
+#player input::-webkit-slider-thumb{
+	-webkit-appearance: none; appearance: none;
+	width: 10px; height: 10px; border-radius: 5px;
+	background: #777;
+}
+#player input::-moz-range-thumb{
+	width: 10px; height: 10px; border-radius: 5px;
+	background: #777;
+}
+
+
+.drop-shadow{ box-shadow: 5px 5px 15px #000000aa; }
+.closeicon{ transition-duration: 0.3s; transition-timing-function: ease-out; color: white; }
+.closeicon:hover{ text-shadow: 0 0 15px white; }
+.interactive{ cursor: pointer; }
+.hinto{ font-style: italic; color: white; margin: 0 auto; transition: opacity 0.5s; }
+.vanished{ opacity: 0; }
+.blurred{ filter: blur(5px); }
+
+@media screen and (max-width: 900px){
+    footer{ position: static; }
+	.mobile-hide{ display: none !important; }
+	body{ overflow: visible; width: initial; }
+	h1{ font-size: 2em; }
+	h2{ font-size: 1.5em; }
+	
+	.newthing{ flex-direction: column; }
+	.newthing div{ text-align: center; }
+	.newthing img{ width: 40vw; }
+	.newthing p{ max-width: initial; }
+	.albumlist{ margin: 0; padding: 10px 0; }
+	.singlealbum{ width: 40vw; }
+	.albumdetails, .songdetails{ overflow: auto; }
+	.albumdetails h2, .albumdetails h3, .songdetails h2, .songdetails h3{ text-align: center; }
+	.albumdetails .info img, .info .contents{ width: 80vw; height: auto; }
+	.info{ flex-direction: column; padding-bottom: 80px; }
+	.info .contents{ text-align: inherit; }
+	
+	.hoverplay{ display: none; text-shadow: 0 0 15px white; }
+	.hoverplay:hover{ background-color: initial; }
+	
+	.linear-list{ flex-direction: column; }
+	.linear-list li:after{ content: ''; margin: 0; }
+	
+	.albumcontainer{ margin: 0; }
+	#player{
+		width: 100%; height: auto;
+		top: 0; bottom: unset;
+		background: none;
+	}
+	#player:hover{ background: #000000ee; }
+	#player div:nth-child(3){ order: 3; opacity: 0; transition-duration: 0.3s; }
+	#player:hover div:nth-child(3){ opacity: 1; }
+	#player .load{ order: 2; }
+	#player .album{ margin: 0; }
+	#player .hoverplay{ width: 32px; font-size: 1.5em; opacity: 1; position: static; }
+	#player .albumcontainer{ margin-right: 10px; display: flex; align-items: center; }
+	#player:hover .hoverplay{ display: flex; }
+	#player .pause:hover + .next, #player .next:hover{ transform: unset; }
+}
