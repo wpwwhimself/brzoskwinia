@@ -1,5 +1,7 @@
 <?php
 
+require_once("auth.php");
+
 /*****PODSTAWY*STRONY*****/
 
 function generateHead($title, $sheet = 0, $en = false){
@@ -93,7 +95,7 @@ CHUJ;
 function giveMeTheCue($b){
 	//łączenie z bazą danych
 	global $conn;
-	$conn = new mysqli("localhost", "p497635_archmage", "viper400X", "p497635_$b");
+	$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME_PREFIX.$b);
 	
 	//błędy
 	if($conn->connect_error) echo "Nie można się połączyć z bazą: ".$conn->connect_error;

@@ -1,8 +1,9 @@
 <?php
+require_once("auth.php");
 session_start();
 
 if(isset($_POST['klucz'])){
-	if($_POST['klucz'] == "marakuja") $_SESSION['klucz'] = true;
+	if($_POST['klucz'] == BACKEND_PASSWORD) $_SESSION['klucz'] = true;
 }
 
 if(!isset($_SESSION['klucz'])){?>
