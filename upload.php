@@ -116,7 +116,7 @@ generateHead("Uploader arcymaga");
 <textarea name="album_desc2" id="album_desc2"></textarea><br>
 <input type="submit" name="submit" value="Utwórz album"></input>
 </form>
-<? if(isset($album_summary)) print "<p>$album_summary</p>"; ?>
+<?php if(isset($album_summary)) print "<p>$album_summary</p>"; ?>
 </section>
 
 <section>
@@ -135,12 +135,12 @@ generateHead("Uploader arcymaga");
 <input type="checkbox" name="song_new" id="song_new"></input><br>
 <input type="submit" name="submit" value="Dodaj utwór"></input>
 </form>
-<? if(isset($song_summary)) print "<p>$song_summary</p>"; ?>
+<?php if(isset($song_summary)) print "<p>$song_summary</p>"; ?>
 </section>
 
 <section>
 <h2>Co jest nowinką?</h2>
-<?
+<?php 
 $q = "SELECT * FROM s_nowinka2";
 $r = $conn->query($q) or die($conn->error);
 $nowinka = $r->fetch_assoc();
@@ -157,12 +157,12 @@ $r->free_result();
 <textarea name="new_desc2" id="new_desc2"><?php echo $nowinka['opis2']; ?></textarea><br>
 <input type="submit" name="submit" value="Odśwież"></input>
 </form>
-<? if(isset($new_summary)) print "<p>$new_summary</p>"; ?>
+<?php if(isset($new_summary)) print "<p>$new_summary</p>"; ?>
 </section>
 </div>
 </div>
 <a href="/?archmage=1"><b>Zurück...</b></a>
-<?
+<?php 
 generateBottom();
 }
 ?>

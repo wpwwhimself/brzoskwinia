@@ -12,7 +12,7 @@ require("variableconverter.php");
 <section>
 <h2><?php echo ($lang)?"The newest news":"Najnowsza nowinka"; ?></h2>
 <div class="newthing">
-<?
+<?php 
 $q = "SELECT a.tytuł, a.album, n.kiedy, n.opis, n.opis2
     FROM s_nowinka2 as n
     LEFT JOIN p_projekty as a ON n.id = a.id
@@ -35,7 +35,7 @@ $r->free_result();
 <section>
 <h2><?php echo ($lang)?"My albums":"Albumy własne"; ?></h2>
 <div class="albumlist">
-<?
+<?php 
 $q = "SELECT nazwa FROM s_albumy WHERE własny = 1 ORDER BY id DESC;";
 $r = $conn->query($q) or die($q.$conn->error);
 while($a = $r->fetch_assoc()){
@@ -51,7 +51,7 @@ $r->free_result();
 <section>
 <h2><?php echo ($lang)?"Cooperations and other tracks":"Kooperacje i pozostałe utwory"; ?></h2>
 <div class="albumlist">
-<?
+<?php 
 $q = "SELECT nazwa FROM s_albumy WHERE własny = 0 ORDER BY id DESC;";
 $r = $conn->query($q) or die($q.$conn->error);
 while($a = $r->fetch_assoc()){
@@ -82,7 +82,7 @@ $r->free_result();
 <div class="songlist drop-shadow">
 <h3><?php echo ($lang)?"Track list":"Lista utworów"; ?></h3>
 <ol>
-<? for($i=0; $i<20; $i++) print "<li class='interactive'>-</li>"; ?>
+<?php for($i=0; $i<20; $i++) print "<li class='interactive'>-</li>"; ?>
 </ol>
 </div>
 </div>
@@ -123,6 +123,6 @@ $r->free_result();
 <img src="interface/load.gif" alt='loading...' class='load'>
 </div>
 
-<?
+<?php 
 generateBottom("main");
 ?>

@@ -11,17 +11,17 @@ var piosenki = new Array();
 $q = "SELECT nazwa, rok, kolor, opis, opis2 FROM s_albumy";
 $r = $conn->query($q) or die($q.$conn->error);
 while($a = $r->fetch_assoc()){?>
-albumy['<? echo str_replace("'", "\'", $a['nazwa']); ?>'] = new Array('rok', 'kolor', 'opis', 'utwory');
-albumy['<? echo str_replace("'", "\'", $a['nazwa']); ?>']['rok'] = "<? echo $a['rok']; ?>";
-albumy['<? echo str_replace("'", "\'", $a['nazwa']); ?>']['kolor'] = "<? echo $a['kolor']; ?>";
-albumy['<? echo str_replace("'", "\'", $a['nazwa']); ?>']['opis'] = "<? echo ($lang)?$a['opis2']:$a['opis']; ?>";
-<? $albumylista[] = $a['nazwa'];
+albumy['<?php echo str_replace("'", "\'", $a['nazwa']); ?>'] = new Array('rok', 'kolor', 'opis', 'utwory');
+albumy['<?php echo str_replace("'", "\'", $a['nazwa']); ?>']['rok'] = "<?php echo $a['rok']; ?>";
+albumy['<?php echo str_replace("'", "\'", $a['nazwa']); ?>']['kolor'] = "<?php echo $a['kolor']; ?>";
+albumy['<?php echo str_replace("'", "\'", $a['nazwa']); ?>']['opis'] = "<?php echo ($lang)?$a['opis2']:$a['opis']; ?>";
+<?php $albumylista[] = $a['nazwa'];
 }
 $r->free_result();
 
 //wypełnienie albumów utworami
 foreach($albumylista as $x){?>
-albumy['<? echo $x; ?>']['utwory'] = new Array();
+albumy['<?php echo $x; ?>']['utwory'] = new Array();
 <?php
     if($x == "brak albumu"){
         $q = "SELECT a.tytuł, p.nr, p.id, a.nazwa, a.data_out, a.inspiracja
@@ -60,14 +60,14 @@ albumy['<? echo $x; ?>']['utwory'] = new Array();
         if($a['nazwa'] !== null) $a['nazwa'] = " ".$a['nazwa'];
         
         $a['inspiracja'] = str_replace(". ", ".", implode(" ", $names)); ?>
-albumy['<? echo $x; ?>']['utwory'].push("<? echo $a['tytuł']; ?>");
-piosenki['<? echo str_replace("'", "\'", $a['tytuł']); ?>'] = new Array('album', 'nr', 'idproj', 'datanagr', 'inspir');
-piosenki['<? echo str_replace("'", "\'", $a['tytuł']); ?>']['album'] = "<? echo $x; ?>";
-piosenki['<? echo str_replace("'", "\'", $a['tytuł']); ?>']['nr'] = "<? echo $a['nr']; ?>";
-piosenki['<? echo str_replace("'", "\'", $a['tytuł']); ?>']['idproj'] = "<? if($a['id'] === null) echo ($lang)?'N/D':'bd.'; else echo $a['id'].$a['nazwa']; ?>";
-piosenki['<? echo str_replace("'", "\'", $a['tytuł']); ?>']['datanagr'] = "<? if($a['data_out'] === null) echo ($lang)?'N/D':'bd.'; else echo date('j.m.Y', strtotime($a['data_out'])); ?>";
-piosenki['<? echo str_replace("'", "\'", $a['tytuł']); ?>']['inspir'] = "<? if($a['inspiracja'] == "") echo ($lang)?'N/D':'bd.'; else echo $a['inspiracja']; ?>";
-<?}
+albumy['<?php echo $x; ?>']['utwory'].push("<?php echo $a['tytuł']; ?>");
+piosenki['<?php echo str_replace("'", "\'", $a['tytuł']); ?>'] = new Array('album', 'nr', 'idproj', 'datanagr', 'inspir');
+piosenki['<?php echo str_replace("'", "\'", $a['tytuł']); ?>']['album'] = "<?php echo $x; ?>";
+piosenki['<?php echo str_replace("'", "\'", $a['tytuł']); ?>']['nr'] = "<?php echo $a['nr']; ?>";
+piosenki['<?php echo str_replace("'", "\'", $a['tytuł']); ?>']['idproj'] = "<?php if($a['id'] === null) echo ($lang)?'N/D':'bd.'; else echo $a['id'].$a['nazwa']; ?>";
+piosenki['<?php echo str_replace("'", "\'", $a['tytuł']); ?>']['datanagr'] = "<?php if($a['data_out'] === null) echo ($lang)?'N/D':'bd.'; else echo date('j.m.Y', strtotime($a['data_out'])); ?>";
+piosenki['<?php echo str_replace("'", "\'", $a['tytuł']); ?>']['inspir'] = "<?php if($a['inspiracja'] == "") echo ($lang)?'N/D':'bd.'; else echo $a['inspiracja']; ?>";
+<?php }
 	$r->free_result();
 }
 ?>
